@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CyberAware Security Portal - Interactive cybersecurity awareness challenge and phishing detection simulation." />
+  <title>Security Challenge | CyberAware Portal</title>
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/pages/dashboard.css" />
+</head>
+<body class="app-page">
+  <div class="cyber-scanner-line" aria-hidden="true"></div>
+
+  <div class="app-container">
+    <!-- Navigation Bar -->
+    <header>
+      <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-brand-group">
+          <a href="home.html" class="logo">
+            <svg class="logo-icon-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M32 4 L54 13 C54 38 42 53 32 60 C22 53 10 38 10 13 Z" fill="#0b1728" stroke="#00f0ff" stroke-width="3"/>
+              <path d="M32 10 L48 17 C48 36 38 48 32 53 C26 48 16 36 16 17 Z" fill="rgba(0, 240, 255, 0.1)"/>
+              <circle cx="32" cy="28" r="5" fill="#00f0ff"/>
+              <path d="M25 44 C25 38 39 38 39 44" stroke="#00f0ff" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+            CyberAware <span class="logo-badge">PORTAL</span>
+          </a>
+        </div>
+
+        <ul class="nav-links">
+          <li><a href="home.html" class="nav-btn"><span>📊</span> Dashboard</a></li>
+          <li><a href="threats.html" class="nav-btn"><span>⚠️</span> Threat Intelligence</a></li>
+          <li><a href="best-practices.html" class="nav-btn"><span>🛡️</span> Defense Toolkit</a></li>
+          <li><a href="quiz.html" class="nav-btn active"><span>🎯</span> Security Challenge</a></li>
+          <li><a href="resources.html" class="nav-btn"><span>📚</span> Incident Hub</a></li>
+        </ul>
+
+        <div class="user-badge-container">
+          <div class="user-chip">
+            <span class="status-dot status-dot-green"></span>
+            <span id="userDisplay">analyst.smith</span>
+            <span id="userRoleBadge" class="badge badge-cyan" style="font-size: 0.65rem;">Level 2</span>
+          </div>
+          <button id="logoutBtn" class="btn btn-danger btn-sm" type="button">Logout</button>
+          <button id="mobileNavToggle" class="mobile-nav-toggle" aria-label="Toggle navigation menu">☰</button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Page Hero Banner -->
+    <section class="page-hero">
+      <div>
+        <div class="hero-meta-badge">
+          <span>●</span> INTERACTIVE SIMULATION LAB // KNOWLEDGE VERIFICATION
+        </div>
+        <h1>Cyber Awareness & Phishing Challenge</h1>
+        <p class="lead">Test your reflexes against realistic cyber threat scenarios. Identify deceptive emails, handle social engineering calls, and earn your defense certificate.</p>
+      </div>
+      <div>
+        <div class="user-chip font-mono" style="font-size: 0.85rem; padding: 0.5rem 1rem;">
+          <span>Score:</span> <strong id="currentScore" style="color: var(--color-primary);">0</strong> / 5
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <main class="content-area" role="main">
+      <div style="max-width: 800px; margin: 0 auto;">
+        <!-- Progress Bar -->
+        <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.4rem; color: var(--color-text-muted);">
+          <span id="progressText">Scenario 1 of 5</span>
+          <span id="progressPercent">20% Completed</span>
+        </div>
+        <div class="strength-bar" style="margin-bottom: var(--space-lg);">
+          <div id="quizProgressBar" class="strength-fill" style="width: 20%; background-color: var(--color-primary);"></div>
+        </div>
+
+        <!-- Quiz Container -->
+        <div id="quizContainer">
+          <!-- Active Scenario Card -->
+          <article class="quiz-card" id="scenarioCard">
+            <div id="scenarioContent">
+              <!-- Dynamically rendered -->
+            </div>
+          </article>
+        </div>
+
+        <!-- Completion Certificate Box (Hidden Initially) -->
+        <div id="certificateContainer" style="display: none;">
+          <div class="completion-certificate">
+            <div class="certificate-seal">🛡️</div>
+            <span class="badge badge-safe" style="margin-bottom: var(--space-sm);">Credential Verified</span>
+            <h2 style="font-size: 1.8rem; color: #ffffff; justify-content: center; margin-bottom: var(--space-xs);">
+              Certificate of Cyber Defense Readiness
+            </h2>
+            <p style="color: var(--color-text-base); margin-bottom: var(--space-md);">
+              This verifies that <strong id="certUser" style="color: var(--color-primary);">Alex</strong> has successfully completed the 
+              <strong>CyberAware Enterprise Threat Assessment</strong> with an operational score of <strong id="certScore" style="color: #00ffaa;">100%</strong>.
+            </p>
+
+            <div style="display: inline-flex; gap: var(--space-xl); margin: var(--space-md) 0; font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-text-muted); border: 1px dashed var(--color-border); padding: var(--space-sm) var(--space-lg); border-radius: var(--radius-md);">
+              <div>Issue Date: <span id="certDate" style="color: var(--color-text-bright);">Today</span></div>
+              <div>Status: <span style="color: #00ffaa;">PASSED</span></div>
+              <div>ID: <span id="certId" style="color: var(--color-primary);">SEC-94821</span></div>
+            </div>
+
+            <div style="margin-top: var(--space-lg); display: flex; justify-content: center; gap: var(--space-md); flex-wrap: wrap;">
+              <button type="button" id="retakeQuizBtn" class="btn btn-secondary">
+                <span>🔄</span> Retake Challenge
+              </button>
+              <a href="threats.html" class="btn btn-primary">
+                <span>🔍</span> Review Threat Intelligence
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="portal-footer" role="contentinfo">
+      <div class="footer-status">
+        <span class="status-dot status-dot-green"></span>
+        <span>Simulation Engine Active // NIST SP 800-50 Standard</span>
+      </div>
+      <div class="footer-links">
+        <a href="home.html">Dashboard</a>
+        <a href="threats.html">Threats</a>
+        <a href="best-practices.html">Best Practices</a>
+        <a href="resources.html">Emergency SOC</a>
+      </div>
+      <div>© 2026 CyberAware Portal — Defense in Depth Program</div>
+    </footer>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Interactive Cybersecurity Challenge Logic
+    (function initQuiz() {
+      const questions = [
+        {
+          id: 1,
+          category: "Phishing & Spoofing",
+          question: "You receive an unexpected email requesting urgent action. What is the most critical red flag in this message?",
+          hasMockup: true,
+          mockup: {
+            from: "it-support@micros0ft-security-auth.net",
+            to: "employee@organization.com",
+            subject: "URGENT: Office 365 Account Will Be Suspended In 2 Hours",
+            body: "Your Microsoft corporate account has exceeded storage limits. Click the secure verification link below within 2 hours or your mailbox will be permanently deactivated."
+          },
+          options: [
+            { text: "The email uses the word 'URGENT' in capital letters.", isCorrect: false, why: "While artificial urgency is a warning sign, urgency alone doesn't prove an attack." },
+            { text: "The sender domain is 'micros0ft-security-auth.net' with a zero '0' instead of 'o'.", isCorrect: true, why: "Lookalike typo-squatted domains are the classic sign of phishing. Microsoft will only send notices from official @microsoft.com domains." },
+            { text: "The email was sent during normal operating hours.", isCorrect: false, why: "Timing has no bearing on legitimacy; attackers operate 24/7." },
+            { text: "The subject mentions Office 365.", isCorrect: false, why: "Mentioning enterprise software is normal; the fake domain is the definitive giveaway." }
+          ]
+        },
+        {
+          id: 2,
+          category: "Physical Security",
+          question: "You arrive at your workplace and spot an unlabelled 64GB USB thumb drive on the floor outside the boardroom marked 'Executive Bonuses & Salaries 2026'. What should you do?",
+          hasMockup: false,
+          scenarioText: "Physical drop attacks (baiting) rely on curiosity to bypass edge firewall controls by having victims plug malicious flash drives into corporate networks.",
+          options: [
+            { text: "Plug it in briefly to see whose name is on the documents so you can return it.", isCorrect: false, why: "Never plug unknown USBs into your device! Malicious microcontrollers (Rubber Ducky) can execute commands and install backdoors in 2 seconds." },
+            { text: "Format the USB immediately so you can safely use it as free storage.", isCorrect: false, why: "Plugging it in to format still executes firmware malware before the format completes." },
+            { text: "Hand the drive directly to Security / IT without connecting it to any device.", isCorrect: true, why: "Physical security and the SOC can inspect it in an isolated, air-gapped forensic sandbox." },
+            { text: "Leave it there and ignore it.", isCorrect: false, why: "Leaving it on the floor allows an unsuspecting colleague to fall victim to the trap." }
+          ]
+        },
+        {
+          id: 3,
+          category: "Identity Defense",
+          question: "At 2:30 AM, your phone starts buzzing continuously with 15 rapid Multi-Factor Authentication (MFA) push prompts asking you to 'Approve Sign-in' from Frankfurt, Germany. What should you do?",
+          hasMockup: false,
+          scenarioText: "This is a classic 'MFA Fatigue' or Push Bombing attack. The threat actor already has your password and is attempting to badger you into tapping Approve.",
+          options: [
+            { text: "Tap 'Approve' to silence your phone so you can get back to sleep.", isCorrect: false, why: "Tapping Approve grants the attacker immediate access to your entire corporate account!" },
+            { text: "Tap 'Deny', immediately change your corporate password from a clean browser, and notify the SOC.", isCorrect: true, why: "Repeated unauthorized pushes mean your primary password has been compromised. Changing it immediately cuts off the attacker's ability to trigger further prompts." },
+            { text: "Delete the Microsoft Authenticator app off your phone.", isCorrect: false, why: "Deleting the app leaves the password exposed and makes future recovery difficult." },
+            { text: "Wait until 9 AM when you go into the office to check on it.", isCorrect: false, why: "Waiting hours gives attackers time to exploit further weaknesses." }
+          ]
+        },
+        {
+          id: 4,
+          category: "Wireless & Remote Work",
+          question: "While traveling through an airport, you connect your laptop to 'Airport_Free_HighSpeed_WiFi' to review confidential client proposals. Which security safeguard is non-negotiable?",
+          hasMockup: false,
+          scenarioText: "Public open Wi-Fi networks allow attackers to execute Evil Twin attacks, SSL-stripping, and packet snooping against unencrypted traffic.",
+          options: [
+            { text: "Lower screen brightness so people sitting behind you cannot read your monitor.", isCorrect: false, why: "Privacy screens help with shoulder surfing, but do nothing against packet sniffing." },
+            { text: "Open your browser in Private / Incognito mode.", isCorrect: false, why: "Incognito mode only disables local history; it offers zero network encryption." },
+            { text: "Activate the enterprise VPN to encrypt all inbound and outbound traffic end-to-end.", isCorrect: true, why: "An enterprise Virtual Private Network (VPN) creates an impenetrable encrypted tunnel that prevents rogue hotspot operators from seeing your data." },
+            { text: "Check that the Wi-Fi icon shows full signal strength.", isCorrect: false, why: "Signal strength has nothing to do with security." }
+          ]
+        },
+        {
+          id: 5,
+          category: "Social Engineering (Vishing)",
+          question: "A friendly caller claims to be 'Mark from IT Support'. He says: 'We are deploying an urgent cybersecurity patch. I just sent an SMS code to your phone; please read it to me to verify your laptop.' How do you respond?",
+          hasMockup: false,
+          scenarioText: "IT Support will NEVER call asking you to read out one-time SMS verification codes. Those codes are for your eyes only.",
+          options: [
+            { text: "Read the code to him since it's an urgent security patch.", isCorrect: false, why: "The caller is attempting to authorize their own password reset or bank transfer using your phone's SMS code!" },
+            { text: "Ask him for his employee ID and then read the code.", isCorrect: false, why: "Attackers routinely forge employee IDs and names from LinkedIn." },
+            { text: "Refuse to disclose the code, hang up immediately, and report the call to the IT Help Desk via internal directory.", isCorrect: true, why: "Legitimate IT staff have administrative access and will never ask you for one-time authentication codes over the phone." },
+            { text: "Text the code to his email instead of reading it aloud.", isCorrect: false, why: "Sending the code by email still hands the attacker the keys." }
+          ]
+        }
+      ];
+
+      let currentIndex = 0;
+      let score = 0;
+
+      const scenarioCard = document.getElementById('scenarioCard');
+      const scenarioContent = document.getElementById('scenarioContent');
+      const progressText = document.getElementById('progressText');
+      const progressPercent = document.getElementById('progressPercent');
+      const progressBar = document.getElementById('quizProgressBar');
+      const currentScoreDisplay = document.getElementById('currentScore');
+      const quizContainer = document.getElementById('quizContainer');
+      const certContainer = document.getElementById('certificateContainer');
+      const certUser = document.getElementById('certUser');
+      const certScore = document.getElementById('certScore');
+      const certDate = document.getElementById('certDate');
+      const certId = document.getElementById('certId');
+      const retakeBtn = document.getElementById('retakeQuizBtn');
+
+      function renderQuestion() {
+        const q = questions[currentIndex];
+        const progress = Math.round(((currentIndex + 1) / questions.length) * 100);
+
+        progressText.textContent = `Scenario ${currentIndex + 1} of ${questions.length}`;
+        progressPercent.textContent = `${progress}% Completed`;
+        progressBar.style.width = `${progress}%`;
+
+        let mockupHtml = '';
+        if (q.hasMockup) {
+          mockupHtml = `
+            <div class="email-mockup">
+              <div class="email-mockup-header">
+                <div class="email-field"><span class="email-field-name">From:</span> <span class="email-field-val highlight-spoof">${q.mockup.from}</span></div>
+                <div class="email-field"><span class="email-field-name">To:</span> <span class="email-field-val">${q.mockup.to}</span></div>
+                <div class="email-field"><span class="email-field-name">Subject:</span> <span class="email-field-val" style="color: #ff9433;">${q.mockup.subject}</span></div>
+              </div>
+              <div class="email-mockup-body">
+                <p style="margin: 0;">${q.mockup.body}</p>
+              </div>
+            </div>
+          `;
+        } else if (q.scenarioText) {
+          mockupHtml = `
+            <div class="quiz-scenario-box">
+              <span>⚠️ Operational Context:</span> ${q.scenarioText}
+            </div>
+          `;
+        }
+
+        let optionsHtml = q.options.map((opt, idx) => `
+          <button type="button" class="quiz-option-btn" data-index="${idx}">
+            <span class="rule-icon" style="flex-shrink: 0;">${String.fromCharCode(65 + idx)}</span>
+            <span>${opt.text}</span>
+          </button>
+        `).join('');
+
+        scenarioContent.innerHTML = `
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-sm);">
+            <span class="badge badge-purple">${q.category}</span>
+            <span class="font-mono text-muted" style="font-size: 0.75rem;">Question ${currentIndex + 1}</span>
+          </div>
+          <h3 class="quiz-question">${q.question}</h3>
+          ${mockupHtml}
+          <div class="quiz-options" id="quizOptionsList">
+            ${optionsHtml}
+          </div>
+          <div id="quizFeedback" class="quiz-explanation"></div>
+          <div id="quizActionRow" style="margin-top: var(--space-md); display: none; justify-content: flex-end;">
+            <button type="button" id="nextQuestionBtn" class="btn btn-primary">
+              <span>Next Scenario</span> <span>➔</span>
+            </button>
+          </div>
+        `;
+
+        // Wire option buttons
+        const optionButtons = scenarioContent.querySelectorAll('.quiz-option-btn');
+        const feedbackDiv = document.getElementById('quizFeedback');
+        const actionRow = document.getElementById('quizActionRow');
+        const nextBtn = document.getElementById('nextQuestionBtn');
+
+        optionButtons.forEach(btn => {
+          btn.addEventListener('click', () => {
+            const selectedIdx = parseInt(btn.getAttribute('data-index'), 10);
+            const selectedOpt = q.options[selectedIdx];
+
+            // Disable all options
+            optionButtons.forEach((b, i) => {
+              b.disabled = true;
+              if (q.options[i].isCorrect) {
+                b.classList.add('selected-correct');
+              }
+            });
+
+            if (selectedOpt.isCorrect) {
+              btn.classList.add('selected-correct');
+              score++;
+              currentScoreDisplay.textContent = score;
+              feedbackDiv.className = 'quiz-explanation show correct';
+              feedbackDiv.innerHTML = `<strong>✅ Correct Analysis!</strong> ${selectedOpt.why}`;
+              window.showToast('Excellent catch! +1 Point', 'success');
+            } else {
+              btn.classList.add('selected-incorrect');
+              feedbackDiv.className = 'quiz-explanation show incorrect';
+              feedbackDiv.innerHTML = `<strong>❌ Critical Risk!</strong> ${selectedOpt.why}`;
+              window.showToast('Scenario compromised! Review feedback.', 'error');
+            }
+
+            actionRow.style.display = 'flex';
+          });
+        });
+
+        nextBtn.addEventListener('click', () => {
+          currentIndex++;
+          if (currentIndex < questions.length) {
+            renderQuestion();
+          } else {
+            showCertificate();
+          }
+        });
+      }
+
+      function showCertificate() {
+        quizContainer.style.display = 'none';
+        certContainer.style.display = 'block';
+
+        const username = Auth.getUser() || 'Security Analyst';
+        certUser.textContent = username;
+        const percentage = Math.round((score / questions.length) * 100);
+        certScore.textContent = `${percentage}% (${score}/${questions.length} Correct)`;
+
+        const today = new Date().toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: 'numeric' });
+        certDate.textContent = today;
+        certId.textContent = `SEC-${Math.floor(10000 + Math.random() * 90000)}`;
+
+        if (percentage >= 80) {
+          window.showToast('Congratulations! You earned the Cyber Defense Certification!', 'success', 5000);
+        } else {
+          window.showToast('Challenge completed. Review Best Practices to strengthen your score.', 'info', 5000);
+        }
+      }
+
+      retakeBtn.addEventListener('click', () => {
+        currentIndex = 0;
+        score = 0;
+        currentScoreDisplay.textContent = '0';
+        certContainer.style.display = 'none';
+        quizContainer.style.display = 'block';
+        renderQuestion();
+      });
+
+      renderQuestion();
+    })();
+  </script>
+</body>
+</html>

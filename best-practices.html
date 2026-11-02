@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CyberAware Security Portal - Interactive defense toolkit featuring live password strength analyzer and personal hygiene audit." />
+  <title>Defense Toolkit & Best Practices | CyberAware Portal</title>
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/pages/dashboard.css" />
+</head>
+<body class="app-page">
+  <div class="cyber-scanner-line" aria-hidden="true"></div>
+
+  <div class="app-container">
+    <!-- Navigation Bar -->
+    <header>
+      <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-brand-group">
+          <a href="home.html" class="logo">
+            <svg class="logo-icon-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M32 4 L54 13 C54 38 42 53 32 60 C22 53 10 38 10 13 Z" fill="#0b1728" stroke="#00f0ff" stroke-width="3"/>
+              <path d="M32 10 L48 17 C48 36 38 48 32 53 C26 48 16 36 16 17 Z" fill="rgba(0, 240, 255, 0.1)"/>
+              <circle cx="32" cy="28" r="5" fill="#00f0ff"/>
+              <path d="M25 44 C25 38 39 38 39 44" stroke="#00f0ff" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+            CyberAware <span class="logo-badge">PORTAL</span>
+          </a>
+        </div>
+
+        <ul class="nav-links">
+          <li><a href="home.html" class="nav-btn"><span>📊</span> Dashboard</a></li>
+          <li><a href="threats.html" class="nav-btn"><span>⚠️</span> Threat Intelligence</a></li>
+          <li><a href="best-practices.html" class="nav-btn active"><span>🛡️</span> Defense Toolkit</a></li>
+          <li><a href="quiz.html" class="nav-btn"><span>🎯</span> Security Challenge</a></li>
+          <li><a href="resources.html" class="nav-btn"><span>📚</span> Incident Hub</a></li>
+        </ul>
+
+        <div class="user-badge-container">
+          <div class="user-chip">
+            <span class="status-dot status-dot-green"></span>
+            <span id="userDisplay">analyst.smith</span>
+            <span id="userRoleBadge" class="badge badge-cyan" style="font-size: 0.65rem;">Level 2</span>
+          </div>
+          <button id="logoutBtn" class="btn btn-danger btn-sm" type="button">Logout</button>
+          <button id="mobileNavToggle" class="mobile-nav-toggle" aria-label="Toggle navigation menu">☰</button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Page Hero Banner -->
+    <section class="page-hero">
+      <div>
+        <div class="hero-meta-badge">
+          <span>●</span> ACTIVE DEFENSE PROTOCOLS // HUMAN FIREWALL MODULE
+        </div>
+        <h1>Cybersecurity Defense Toolkit</h1>
+        <p class="lead">Interactive tools and operational security standards designed to eliminate vulnerabilities before attackers can exploit them.</p>
+      </div>
+      <div>
+        <a href="#hygiene-audit" class="btn btn-primary">
+          <span>📋</span> Run Hygiene Audit
+        </a>
+      </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <main class="content-area" role="main">
+      <!-- TOOL 1: Interactive Password Strength & Entropy Analyzer -->
+      <section id="password-tool" class="card" aria-labelledby="pwd-tool-heading" style="margin-bottom: var(--space-xl);">
+        <div class="card-header">
+          <div style="display: flex; align-items: center; gap: var(--space-sm);">
+            <div class="card-icon-wrapper" style="color: var(--color-primary); border-color: rgba(0, 240, 255, 0.3);">
+              🔑
+            </div>
+            <div>
+              <h2 id="pwd-tool-heading" style="margin: 0; font-size: 1.3rem;">Interactive Password Strength & Entropy Analyzer</h2>
+              <p style="margin: 0; font-size: 0.85rem; color: var(--color-text-muted);">Type a test phrase to analyze crack time, brute-force resistance, and complexity in real-time.</p>
+            </div>
+          </div>
+          <button type="button" id="generatePwdBtn" class="btn btn-secondary btn-sm">
+            <span>⚡</span> Generate Strong Password
+          </button>
+        </div>
+
+        <div style="margin-top: var(--space-md);">
+          <div class="input-wrapper">
+            <input
+              type="text"
+              id="testPasswordInput"
+              class="form-input"
+              placeholder="Type or generate a password to evaluate (e.g., Solar#Shield!2026*)..."
+              autocomplete="off"
+              spellcheck="false"
+            />
+            <button type="button" id="copyPwdBtn" class="input-icon-btn" title="Copy password to clipboard">
+              📋
+            </button>
+          </div>
+
+          <!-- Strength Meter Bar -->
+          <div class="strength-meter-container">
+            <div class="strength-bar">
+              <div id="strengthFill" class="strength-fill"></div>
+            </div>
+            <div class="strength-meta">
+              <span id="strengthLabel" style="font-weight: 600;">Status: Awaiting input</span>
+              <span id="crackTimeLabel" class="font-mono">Est. Crack Time: 0s</span>
+            </div>
+          </div>
+
+          <!-- Rules Checklist -->
+          <div class="rules-grid">
+            <div class="rule-item" id="ruleLength">
+              <span class="rule-icon">✕</span>
+              <span>At least 12 characters</span>
+            </div>
+            <div class="rule-item" id="ruleUpper">
+              <span class="rule-icon">✕</span>
+              <span>Uppercase letter (A-Z)</span>
+            </div>
+            <div class="rule-item" id="ruleLower">
+              <span class="rule-icon">✕</span>
+              <span>Lowercase letter (a-z)</span>
+            </div>
+            <div class="rule-item" id="ruleNumber">
+              <span class="rule-icon">✕</span>
+              <span>Number (0-9)</span>
+            </div>
+            <div class="rule-item" id="ruleSpecial">
+              <span class="rule-icon">✕</span>
+              <span>Special symbol (!@#$%^&*)</span>
+            </div>
+            <div class="rule-item" id="ruleCommon">
+              <span class="rule-icon">✓</span>
+              <span>No obvious patterns</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOOL 2: Interactive Personal Cyber Hygiene Audit -->
+      <section id="hygiene-audit" class="readiness-box" aria-labelledby="audit-heading">
+        <div class="readiness-header">
+          <div>
+            <div class="demo-title" style="margin-bottom: 0.25rem;">
+              <span>🛡️</span> Interactive Self-Assessment
+            </div>
+            <h2 id="audit-heading" style="margin: 0; font-size: 1.35rem;">Personal Cyber Hygiene Audit</h2>
+            <p style="margin: 0; font-size: 0.85rem; color: var(--color-text-muted);">
+              Check the security practices you currently adhere to. Your score will update dynamically.
+            </p>
+          </div>
+          <div style="text-align: right;">
+            <div id="hygieneScore" class="score-display">0%</div>
+            <span id="hygieneBadge" class="badge badge-critical">Critical Risk</span>
+          </div>
+        </div>
+
+        <div id="auditChecklist" style="margin-top: var(--space-md);">
+          <label class="check-item">
+            <input type="checkbox" class="audit-check" data-weight="20" />
+            <div class="check-label">
+              <strong>Multi-Factor Authentication (MFA) Active Everywhere</strong>
+              <span class="check-desc">MFA is required on corporate portals, personal email, banking, and cloud storage accounts.</span>
+            </div>
+          </label>
+
+          <label class="check-item">
+            <input type="checkbox" class="audit-check" data-weight="20" />
+            <div class="check-label">
+              <strong>Zero Password Reuse</strong>
+              <span class="check-desc">Every account uses a distinct, unique passphrase managed via a secure password vault.</span>
+            </div>
+          </label>
+
+          <label class="check-item">
+            <input type="checkbox" class="audit-check" data-weight="15" />
+            <div class="check-label">
+              <strong>Proactive Email Verification & Link Hovering</strong>
+              <span class="check-desc">I inspect sender domains and hover over URLs before clicking unexpected links or downloading attachments.</span>
+            </div>
+          </label>
+
+          <label class="check-item">
+            <input type="checkbox" class="audit-check" data-weight="15" />
+            <div class="check-label">
+              <strong>Automated Patching & Operating System Updates</strong>
+              <span class="check-desc">Laptops, phones, and browser extensions receive and install critical security patches within 24 hours.</span>
+            </div>
+          </label>
+
+          <label class="check-item">
+            <input type="checkbox" class="audit-check" data-weight="15" />
+            <div class="check-label">
+              <strong>Offline / Air-Gapped 3-2-1 Data Backups</strong>
+              <span class="check-desc">Critical personal and business records are backed up offline where ransomware cannot tamper with them.</span>
+            </div>
+          </label>
+
+          <label class="check-item">
+            <input type="checkbox" class="audit-check" data-weight="15" />
+            <div class="check-label">
+              <strong>Physical Screen Lock Discipline</strong>
+              <span class="check-desc">I manually lock my computer screen (Win+L / Cmd+Ctrl+Q) immediately whenever stepping away from my desk.</span>
+            </div>
+          </label>
+        </div>
+
+        <div id="hygieneAdvice" style="margin-top: var(--space-md); padding: var(--space-md); border-radius: var(--radius-md); background: rgba(0, 240, 255, 0.05); border: 1px solid var(--color-border); font-size: 0.9rem; color: var(--color-text-bright);">
+          💡 <strong>Assessment Feedback:</strong> Select the checkboxes above that represent your daily security habits to calculate your personalized protection index.
+        </div>
+      </section>
+
+      <!-- Section 3: Do's and Don'ts Best Practice Matrix -->
+      <section aria-labelledby="guidelines-heading">
+        <h2 id="guidelines-heading">
+          <span>📋</span> Operational Security Protocols: Do's vs. Don'ts
+        </h2>
+        <p>Adopt these gold-standard habits to reduce attack surfaces across all communication channels.</p>
+
+        <div class="grid-2">
+          <!-- Passwords & Authentication -->
+          <article class="card">
+            <div class="card-header">
+              <h3 style="margin: 0; font-size: 1.15rem; color: #ffffff;">🔑 Authentication & Credentials</h3>
+              <span class="badge badge-cyan">Identity</span>
+            </div>
+            <div style="margin-top: var(--space-sm);">
+              <div style="margin-bottom: var(--space-sm); color: #00ffaa; font-size: 0.9rem; font-weight: 600;">✅ ALWAYS DO:</div>
+              <ul style="margin-bottom: var(--space-md);">
+                <li>Use 4-word random passphrases (e.g., <code class="font-mono">Falcon#Crimson!River*99</code>)</li>
+                <li>Store credentials in Bitwarden, 1Password, or company vault</li>
+                <li>Reject any unexpected MFA push notifications immediately</li>
+              </ul>
+              <div style="margin-bottom: var(--space-sm); color: #ff5c84; font-size: 0.9rem; font-weight: 600;">❌ NEVER DO:</div>
+              <ul>
+                <li>Never write passwords on sticky notes or plain text files</li>
+                <li>Never share credentials over Slack, email, or WhatsApp</li>
+                <li>Never reuse personal email passwords on work accounts</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Email & Social Engineering -->
+          <article class="card">
+            <div class="card-header">
+              <h3 style="margin: 0; font-size: 1.15rem; color: #ffffff;">📧 Inbound Communications</h3>
+              <span class="badge badge-cyan">Messaging</span>
+            </div>
+            <div style="margin-top: var(--space-sm);">
+              <div style="margin-bottom: var(--space-sm); color: #00ffaa; font-size: 0.9rem; font-weight: 600;">✅ ALWAYS DO:</div>
+              <ul style="margin-bottom: var(--space-md);">
+                <li>Inspect sender domain letter-by-letter for subtle typos</li>
+                <li>Verify wire or banking requests via official phone directory</li>
+                <li>Report suspicious messages to the Security Operations team</li>
+              </ul>
+              <div style="margin-bottom: var(--space-sm); color: #ff5c84; font-size: 0.9rem; font-weight: 600;">❌ NEVER DO:</div>
+              <ul>
+                <li>Never click "Enable Content/Macros" on unexpected Word/Excel docs</li>
+                <li>Never read one-time SMS verification codes to callers</li>
+                <li>Never bypass warnings for invalid SSL/TLS website certificates</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Device & Physical Security -->
+          <article class="card">
+            <div class="card-header">
+              <h3 style="margin: 0; font-size: 1.15rem; color: #ffffff;">💻 Workstation & Mobility</h3>
+              <span class="badge badge-cyan">Hardware</span>
+            </div>
+            <div style="margin-top: var(--space-sm);">
+              <div style="margin-bottom: var(--space-sm); color: #00ffaa; font-size: 0.9rem; font-weight: 600;">✅ ALWAYS DO:</div>
+              <ul style="margin-bottom: var(--space-md);">
+                <li>Lock your screen every time you stand up from your workstation</li>
+                <li>Ensure full-disk encryption (BitLocker / FileVault) is active</li>
+                <li>Install operating system security updates promptly</li>
+              </ul>
+              <div style="margin-bottom: var(--space-sm); color: #ff5c84; font-size: 0.9rem; font-weight: 600;">❌ NEVER DO:</div>
+              <ul>
+                <li>Never plug mysterious USB thumb drives found in parking lots</li>
+                <li>Never leave laptops unattended in vehicles or cafe tables</li>
+                <li>Never disable corporate Endpoint Detection & Response (EDR)</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Network & Public Wi-Fi -->
+          <article class="card">
+            <div class="card-header">
+              <h3 style="margin: 0; font-size: 1.15rem; color: #ffffff;">🌐 Wireless & Travel Hygiene</h3>
+              <span class="badge badge-cyan">Network</span>
+            </div>
+            <div style="margin-top: var(--space-sm);">
+              <div style="margin-bottom: var(--space-sm); color: #00ffaa; font-size: 0.9rem; font-weight: 600;">✅ ALWAYS DO:</div>
+              <ul style="margin-bottom: var(--space-md);">
+                <li>Turn on enterprise VPN prior to connecting on hotel/airport Wi-Fi</li>
+                <li>Use mobile hotspot tethering for highly confidential transactions</li>
+                <li>Verify padlock icon and strict HTTPS on all destinations</li>
+              </ul>
+              <div style="margin-bottom: var(--space-sm); color: #ff5c84; font-size: 0.9rem; font-weight: 600;">❌ NEVER DO:</div>
+              <ul>
+                <li>Never connect to unencrypted Wi-Fi networks without VPN active</li>
+                <li>Never leave Bluetooth set to 'Discoverable' in crowded venues</li>
+                <li>Never ignore browser warnings about altered certificates</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="portal-footer" role="contentinfo">
+      <div class="footer-status">
+        <span class="status-dot status-dot-green"></span>
+        <span>Best Practices Compliant // ISO 27001 & CIS Controls v8</span>
+      </div>
+      <div class="footer-links">
+        <a href="home.html">Dashboard</a>
+        <a href="threats.html">Threats</a>
+        <a href="quiz.html">Challenge</a>
+        <a href="resources.html">Emergency SOC</a>
+      </div>
+      <div>© 2026 CyberAware Portal — Defense in Depth Program</div>
+    </footer>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Interactive Password Analyzer & Cyber Hygiene Audit Logic
+    (function initBestPractices() {
+      // 1. Password Analyzer Elements
+      const pwdInput = document.getElementById('testPasswordInput');
+      const copyBtn = document.getElementById('copyPwdBtn');
+      const genBtn = document.getElementById('generatePwdBtn');
+      const strengthFill = document.getElementById('strengthFill');
+      const strengthLabel = document.getElementById('strengthLabel');
+      const crackTimeLabel = document.getElementById('crackTimeLabel');
+
+      const ruleLength = document.getElementById('ruleLength');
+      const ruleUpper = document.getElementById('ruleUpper');
+      const ruleLower = document.getElementById('ruleLower');
+      const ruleNumber = document.getElementById('ruleNumber');
+      const ruleSpecial = document.getElementById('ruleSpecial');
+      const ruleCommon = document.getElementById('ruleCommon');
+
+      function evaluatePassword(pwd) {
+        if (!pwd) {
+          strengthFill.style.width = '0%';
+          strengthLabel.textContent = 'Status: Awaiting input';
+          strengthLabel.style.color = 'var(--color-text-muted)';
+          crackTimeLabel.textContent = 'Est. Crack Time: 0s';
+          resetRules();
+          return;
+        }
+
+        const len = pwd.length;
+        const hasUpper = /[A-Z]/.test(pwd);
+        const hasLower = /[a-z]/.test(pwd);
+        const hasNum = /[0-9]/.test(pwd);
+        const hasSpec = /[^A-Za-z0-9]/.test(pwd);
+        const isCommon = /(password|123456|qwerty|admin|welcome|letmein)/i.test(pwd);
+
+        // Update rule UI
+        updateRule(ruleLength, len >= 12);
+        updateRule(ruleUpper, hasUpper);
+        updateRule(ruleLower, hasLower);
+        updateRule(ruleNumber, hasNum);
+        updateRule(ruleSpecial, hasSpec);
+        updateRule(ruleCommon, !isCommon);
+
+        // Calculate score
+        let score = 0;
+        if (len >= 8) score += 15;
+        if (len >= 12) score += 25;
+        if (len >= 16) score += 15;
+        if (hasUpper) score += 15;
+        if (hasLower) score += 10;
+        if (hasNum) score += 15;
+        if (hasSpec) score += 20;
+        if (isCommon) score = Math.min(score, 20);
+
+        score = Math.min(score, 100);
+        strengthFill.style.width = score + '%';
+
+        let color = '#ff5c84';
+        let label = 'Weak (Easily Compromised)';
+        let crackTime = 'A few seconds';
+
+        if (score < 30) {
+          color = '#ff5c84';
+          label = 'Critically Weak';
+          crackTime = len < 8 ? 'Instant (0.0001s)' : '10 minutes';
+        } else if (score < 60) {
+          color = '#ffb800';
+          label = 'Moderate (Vulnerable to Brute-Force)';
+          crackTime = '3 weeks';
+        } else if (score < 85) {
+          color = '#38bdf8';
+          label = 'Strong (Enterprise Grade)';
+          crackTime = '12,000 years';
+        } else {
+          color = '#00ffaa';
+          label = 'Fortress Level (Uncrackable)';
+          crackTime = '34 Billion years';
+        }
+
+        strengthFill.style.backgroundColor = color;
+        strengthLabel.textContent = `Status: ${label}`;
+        strengthLabel.style.color = color;
+        crackTimeLabel.textContent = `Est. Crack Time: ${crackTime}`;
+      }
+
+      function updateRule(element, isValid) {
+        if (isValid) {
+          element.classList.add('valid');
+          element.querySelector('.rule-icon').textContent = '✓';
+        } else {
+          element.classList.remove('valid');
+          element.querySelector('.rule-icon').textContent = '✕';
+        }
+      }
+
+      function resetRules() {
+        [ruleLength, ruleUpper, ruleLower, ruleNumber, ruleSpecial].forEach(r => updateRule(r, false));
+        updateRule(ruleCommon, true);
+      }
+
+      function generateStrongPassword() {
+        const words = ['Solar', 'Cipher', 'Shield', 'Matrix', 'Nexus', 'Falcon', 'Vortex', 'Sentinel', 'Titan', 'Quantum'];
+        const word1 = words[Math.floor(Math.random() * words.length)];
+        const word2 = words[Math.floor(Math.random() * words.length)];
+        const num = Math.floor(100 + Math.random() * 900);
+        const specialChars = '!@#$%&*';
+        const spec1 = specialChars[Math.floor(Math.random() * specialChars.length)];
+        const spec2 = specialChars[Math.floor(Math.random() * specialChars.length)];
+
+        const pass = `${word1}${spec1}${word2}${num}${spec2}`;
+        pwdInput.value = pass;
+        evaluatePassword(pass);
+        window.showToast('Generated strong passphrase!', 'success');
+      }
+
+      pwdInput.addEventListener('input', (e) => evaluatePassword(e.target.value));
+      genBtn.addEventListener('click', generateStrongPassword);
+
+      copyBtn.addEventListener('click', () => {
+        if (!pwdInput.value) {
+          window.showToast('Please type or generate a password first.', 'error');
+          return;
+        }
+        navigator.clipboard.writeText(pwdInput.value).then(() => {
+          window.showToast('Password copied to clipboard!', 'success');
+        }).catch(() => {
+          window.showToast('Copied password', 'success');
+        });
+      });
+
+      // 2. Personal Cyber Hygiene Audit
+      const auditCheckboxes = document.querySelectorAll('.audit-check');
+      const scoreDisplay = document.getElementById('hygieneScore');
+      const badgeDisplay = document.getElementById('hygieneBadge');
+      const adviceDisplay = document.getElementById('hygieneAdvice');
+
+      function calculateAuditScore() {
+        let totalScore = 0;
+        let checkedCount = 0;
+
+        auditCheckboxes.forEach(cb => {
+          if (cb.checked) {
+            totalScore += parseInt(cb.getAttribute('data-weight'), 10);
+            checkedCount++;
+          }
+        });
+
+        scoreDisplay.textContent = `${totalScore}%`;
+
+        if (totalScore === 0) {
+          badgeDisplay.className = 'badge badge-critical';
+          badgeDisplay.textContent = 'Critical Risk';
+          adviceDisplay.innerHTML = '🚨 <strong>High Exposure:</strong> Without baseline defenses like MFA and unique passwords, your accounts are highly vulnerable to automated credential stuffing.';
+        } else if (totalScore < 50) {
+          badgeDisplay.className = 'badge badge-high';
+          badgeDisplay.textContent = 'Vulnerable';
+          adviceDisplay.innerHTML = '⚠️ <strong>Action Needed:</strong> Enable Multi-Factor Authentication immediately and begin transitioning all passwords into a password manager.';
+        } else if (totalScore < 85) {
+          badgeDisplay.className = 'badge badge-medium';
+          badgeDisplay.textContent = 'Good Defense';
+          adviceDisplay.innerHTML = '👍 <strong>Solid Hygiene:</strong> You follow foundational practices. Consider adding air-gapped offline backups to protect against ransomware.';
+        } else {
+          badgeDisplay.className = 'badge badge-safe';
+          badgeDisplay.textContent = 'Fortress Shield';
+          adviceDisplay.innerHTML = '🌟 <strong>Elite Cyber Citizen:</strong> Exemplary security posture! You demonstrate best-in-class defense-in-depth across identity, devices, and communication.';
+        }
+      }
+
+      auditCheckboxes.forEach(cb => {
+        cb.addEventListener('change', calculateAuditScore);
+      });
+    })();
+  </script>
+</body>
+</html>

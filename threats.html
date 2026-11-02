@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CyberAware Security Portal - Comprehensive cyber threat intelligence database and attack vector analysis." />
+  <title>Threat Intelligence | CyberAware Portal</title>
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/pages/dashboard.css" />
+</head>
+<body class="app-page">
+  <div class="cyber-scanner-line" aria-hidden="true"></div>
+
+  <div class="app-container">
+    <!-- Navigation Bar -->
+    <header>
+      <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-brand-group">
+          <a href="home.html" class="logo">
+            <svg class="logo-icon-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M32 4 L54 13 C54 38 42 53 32 60 C22 53 10 38 10 13 Z" fill="#0b1728" stroke="#00f0ff" stroke-width="3"/>
+              <path d="M32 10 L48 17 C48 36 38 48 32 53 C26 48 16 36 16 17 Z" fill="rgba(0, 240, 255, 0.1)"/>
+              <circle cx="32" cy="28" r="5" fill="#00f0ff"/>
+              <path d="M25 44 C25 38 39 38 39 44" stroke="#00f0ff" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+            CyberAware <span class="logo-badge">PORTAL</span>
+          </a>
+        </div>
+
+        <ul class="nav-links">
+          <li><a href="home.html" class="nav-btn"><span>📊</span> Dashboard</a></li>
+          <li><a href="threats.html" class="nav-btn active"><span>⚠️</span> Threat Intelligence</a></li>
+          <li><a href="best-practices.html" class="nav-btn"><span>🛡️</span> Defense Toolkit</a></li>
+          <li><a href="quiz.html" class="nav-btn"><span>🎯</span> Security Challenge</a></li>
+          <li><a href="resources.html" class="nav-btn"><span>📚</span> Incident Hub</a></li>
+        </ul>
+
+        <div class="user-badge-container">
+          <div class="user-chip">
+            <span class="status-dot status-dot-green"></span>
+            <span id="userDisplay">analyst.smith</span>
+            <span id="userRoleBadge" class="badge badge-cyan" style="font-size: 0.65rem;">Level 2</span>
+          </div>
+          <button id="logoutBtn" class="btn btn-danger btn-sm" type="button">Logout</button>
+          <button id="mobileNavToggle" class="mobile-nav-toggle" aria-label="Toggle navigation menu">☰</button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Page Hero Banner -->
+    <section class="page-hero">
+      <div>
+        <div class="hero-meta-badge">
+          <span>●</span> THREAT INTELLIGENCE REPOSITORY // CLASSIFIED UNCLASSIFIED
+        </div>
+        <h1>Cyber Threat Intelligence & Vectors</h1>
+        <p class="lead">Know your adversary. Explore active attack methodologies, analyze real-world breach case studies, and discover precision mitigation tactics.</p>
+      </div>
+
+      <!-- Live Search Box -->
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input
+          type="text"
+          id="threatSearchInput"
+          class="form-input"
+          placeholder="Search threats, vectors, or keywords..."
+          aria-label="Search cyber threats"
+        />
+      </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <main class="content-area" role="main">
+      <!-- Filter Bar -->
+      <div class="filter-bar" role="tablist" aria-label="Threat categories">
+        <button type="button" class="filter-pill active" data-category="all">All Vectors (8)</button>
+        <button type="button" class="filter-pill" data-category="phishing">Phishing & Email</button>
+        <button type="button" class="filter-pill" data-category="malware">Malware & Ransomware</button>
+        <button type="button" class="filter-pill" data-category="identity">Identity & Auth</button>
+        <button type="button" class="filter-pill" data-category="social">Social Engineering</button>
+        <button type="button" class="filter-pill" data-category="network">Network & Wireless</button>
+      </div>
+
+      <!-- Threat Cards Grid -->
+      <div class="grid-2" id="threatGrid">
+        <!-- 1. Spear Phishing & BEC -->
+        <article class="card threat-card card-glow-critical" data-category="phishing" data-name="spear phishing business email compromise bec fake invoice">
+          <div>
+            <div class="card-header">
+              <div class="card-icon-wrapper" style="color: #ff5c84; border-color: rgba(255, 51, 102, 0.3);">🎣</div>
+              <span class="badge badge-critical">Critical Severity</span>
+            </div>
+            <h3>Spear Phishing & BEC Wire Fraud</h3>
+            <p>Targeted, personalized email scams imitating executives, legal partners, or vendors requesting urgent bank transfers or payroll updates.</p>
+            <ul>
+              <li>Deceptive lookalike sender addresses (e.g., @micros0ft.com)</li>
+              <li>Fake urgency ("Wire funds immediately before market close")</li>
+              <li>Compromised vendor invoice account tampering</li>
+            </ul>
+          </div>
+          <div style="margin-top: var(--space-md); border-top: 1px solid var(--color-border-subtle); padding-top: var(--space-sm); display: flex; justify-content: space-between; align-items: center;">
+            <span class="font-mono text-muted" style="font-size: 0.75rem;">Vector: Email / SMTP</span>
+            <button type="button" class="btn btn-outline btn-sm view-anatomy-btn" data-threat="phishing">
+              <span>🔬</span> View Attack Anatomy
+            </button>
+          </div>
+        </article>
+
+        <!-- 2. Ransomware -->
+        <article class="card threat-card card-glow-critical" data-category="malware" data-name="ransomware double extortion encryption malware lockbit blackcat">
+          <div>
+            <div class="card-header">
+              <div class="card-icon-wrapper" style="color: #ff5c84; border-color: rgba(255, 51, 102, 0.3);">🦠</div>
+              <span class="badge badge-critical">Critical Severity</span>
+            </div>
+            <h3>Ransomware & Double Extortion</h3>
+            <p>Malicious payloads that silently exfiltrate company data before encrypting local drives, databases, and network shares demanding millions in cryptocurrency.</p>
+            <ul>
+              <li>Spread via weaponized email attachments & unpatched VPNs</li>
+              <li>Exfiltrates confidential records before executing lockups</li>
+              <li>Attempts to destroy online backup volumes first</li>
+            </ul>
+          </div>
+          <div style="margin-top: var(--space-md); border-top: 1px solid var(--color-border-subtle); padding-top: var(--space-sm); display: flex; justify-content: space-between; align-items: center;">
+            <span class="font-mono text-muted" style="font-size: 0.75rem;">Vector: Endpoint / RDP</span>
+            <button type="button" class="btn btn-outline btn-sm view-anatomy-btn" data-threat="ransomware">
+              <span>🔬</span> View Attack Anatomy
+            </button>
+          </div>
+        </article>
+
+        <!-- 3. MFA Fatigue -->
+        <article class="card threat-card" data-category="identity" data-name="mfa fatigue push bombing multi factor authentication 2fa push notification">
+          <div>
+            <div class="card-header">
+              <div class="card-icon-wrapper" style="color: #ff9433; border-color: rgba(255, 119, 0, 0.3);">📲</div>
+              <span class="badge badge-high">High Severity</span>
+            </div>
+            <h3>MFA Fatigue & Push Bombing</h3>
+            <p>Attackers who possess a stolen password trigger dozens of 2FA push notifications in rapid succession, hoping the exhausted user taps "Approve" to stop the alerts.</p>
+            <ul>
+              <li>Covers night-time hours when users are half-asleep</li>
+              <li>Often paired with WhatsApp or SMS pretending to be IT</li>
+              <li>Bypasses standard multi-factor authentication if accepted</li>
+            </ul>
+          </div>
+          <div style="margin-top: var(--space-md); border-top: 1px solid var(--color-border-subtle); padding-top: var(--space-sm); display: flex; justify-content: space-between; align-items: center;">
+            <span class="font-mono text-muted" style="font-size: 0.75rem;">Vector: Identity / Mobile</span>
+            <button type="button" class="btn btn-outline btn-sm view-anatomy-btn" data-threat="mfafatigue">
+              <span>🔬</span> View Attack Anatomy
+            </button>
+          </div>
+        </article>
+
+        <!-- 4. Credential Stuffing -->
+        <article class="card threat-card" data-category="identity" data-name="credential stuffing password spraying brute force dictionary breach leaks">
+          <div>
+            <div class="card-header">
+              <div class="card-icon-wrapper" style="color: #ff9433; border-color: rgba(255, 119, 0, 0.3);">🔓</div>
+              <span class="badge badge-high">High Severity</span>
+            </div>
+            <h3>Credential Stuffing & Password Spraying</h3>
+            <p>Automated botnets use leaked email/password combos from historical public breaches to hammer corporate login portals until identical credentials match.</p>
+            <ul>
+              <li>Takes advantage of human password reuse across sites</li>
+              <li>Uses rotating proxy IP addresses to evade rate limits</li>
+              <li>Compromises cloud accounts without phishing needed</li>
+            </ul>
+          </div>
+          <div style="margin-top: var(--space-md); border-top: 1px solid var(--color-border-subtle); padding-top: var(--space-sm); display: flex; justify-content: space-between; align-items: center;">
+            <span class="font-mono text-muted" style="font-size: 0.75rem;">Vector: Web Auth / Bots</span>
+            <button type="button" class="btn btn-outline btn-sm view-anatomy-btn" data-threat="credstuffing">
+              <span>🔬</span> View Attack Anatomy
+            </button>
+          </div>
+        </article>
+
+        <!-- 5. Social Engineering & Vishing -->
+        <article class="card threat-card" data-category="social" data-name="social engineering vishing pretexting voice deepfake phone call it support">
+          <div>
+            <div class="card-header">
+              <div class="card-icon-wrapper" style="color: #ffd043; border-color: rgba(255, 184, 0, 0.3);">🕵️</div>
+              <span class="badge badge-medium">Medium Severity</span>
+            </div>
+            <h3>Pretexting & Vishing (Voice Phishing)</h3>
+            <p>Fraudsters phone employees posing as the internal IT Helpdesk, Microsoft Support, or a frantic executive, demanding temporary remote access or MFA one-time codes.</p>
+            <ul>
+              <li>Leverages LinkedIn company research to drop real colleague names</li>
+              <li>Uses AI voice cloning to mimic management tone</li>
+              <li>Urges victims to install remote desktop tools (AnyDesk/TeamViewer)</li>
+            </ul>
+          </div>
+          <div style="margin-top: var(--space-md); border-top: 1px solid var(--color-border-subtle); padding-top: var(--space-sm); display: flex; justify-content: space-between; align-items: center;">
+            <span class="font-mono text-muted" style="font-size: 0.75rem;">Vector: Voice / Human Trust</span>
+            <button type="button" class="btn btn-outline btn-sm view-anatomy-btn" data-threat="vishing">
+              <span>🔬</span> View Attack Anatomy
+            </button>
+          </div>
+        </article>
+
+        <!-- 6. Evil Twin & Rogue Wi-Fi -->
+        <article class="card threat-card" data-category="network" data-name="evil twin rogue wifi man in the middle mitm packet sniffing hotel airport wifi">
+          <div>
+            <div class="card-header">
+              <div class="card-icon-wrapper" style="color: #ffd043; border-color: rgba(255, 184, 0, 0.3);">📶</div>
+              <span class="badge badge-medium">Medium Severity</span>
+            </div>
+            <h3>Evil Twin & Public Wi-Fi Sniffing</h3>
+            <p>Threat actors set up fake wireless access points named "Airport_Guest_WiFi" in transit hubs, intercepting unencrypted traffic, cookies, and login credentials.</p>
+            <ul>
+              <li>Presents fake captive portals asking for Microsoft 365 login</li>
+              <li>Conducts SSL stripping and session token theft</li>
+              <li>Easily blocked by mandating full-tunnel enterprise VPN</li>
+            </ul>
+          </div>
+          <div style="margin-top: var(--space-md); border-top: 1px solid var(--color-border-subtle); padding-top: var(--space-sm); display: flex; justify-content: space-between; align-items: center;">
+            <span class="font-mono text-muted" style="font-size: 0.75rem;">Vector: 802.11 Wireless</span>
+            <button type="button" class="btn btn-outline btn-sm view-anatomy-btn" data-threat="eviltwin">
+              <span>🔬</span> View Attack Anatomy
+            </button>
+          </div>
+        </article>
+
+        <!-- 7. Quishing (Malicious QR Codes) -->
+        <article class="card threat-card" data-category="phishing" data-name="quishing qr code scan parking restaurant physical stickers camera">
+          <div>
+            <div class="card-header">
+              <div class="card-icon-wrapper" style="color: #ffd043; border-color: rgba(255, 184, 0, 0.3);">📱</div>
+              <span class="badge badge-medium">Medium Severity</span>
+            </div>
+            <h3>Quishing (QR Code Traps)</h3>
+            <p>Attackers embed malicious QR codes in PDF invoices or physically glue replacement QR stickers over genuine cafeteria or event sign-in boards.</p>
+            <ul>
+              <li>Bypasses traditional email gateway URL filters</li>
+              <li>Shifts victim from protected corporate PC to personal mobile browser</li>
+              <li>Redirects to fake credential-harvesting landing pages</li>
+            </ul>
+          </div>
+          <div style="margin-top: var(--space-md); border-top: 1px solid var(--color-border-subtle); padding-top: var(--space-sm); display: flex; justify-content: space-between; align-items: center;">
+            <span class="font-mono text-muted" style="font-size: 0.75rem;">Vector: Optical / QR Code</span>
+            <button type="button" class="btn btn-outline btn-sm view-anatomy-btn" data-threat="quishing">
+              <span>🔬</span> View Attack Anatomy
+            </button>
+          </div>
+        </article>
+
+        <!-- 8. Malvertising & Drive-By Downloads -->
+        <article class="card threat-card" data-category="malware" data-name="malvertising drive by downloads browser exploit kit ads adware zero day">
+          <div>
+            <div class="card-header">
+              <div class="card-icon-wrapper" style="color: #ff9433; border-color: rgba(255, 119, 0, 0.3);">💻</div>
+              <span class="badge badge-high">High Severity</span>
+            </div>
+            <h3>Drive-By Downloads & Malvertising</h3>
+            <p>Legitimate mainstream websites unintentionally display compromised ad banners that probe browser versions and deliver silent malware downloads.</p>
+            <ul>
+              <li>Requires no direct file execution click by the user</li>
+              <li>Targets outdated browser extensions and PDF plugins</li>
+              <li>Can infect clean corporate devices through web traffic</li>
+            </ul>
+          </div>
+          <div style="margin-top: var(--space-md); border-top: 1px solid var(--color-border-subtle); padding-top: var(--space-sm); display: flex; justify-content: space-between; align-items: center;">
+            <span class="font-mono text-muted" style="font-size: 0.75rem;">Vector: HTTP / Browser Engine</span>
+            <button type="button" class="btn btn-outline btn-sm view-anatomy-btn" data-threat="malvertising">
+              <span>🔬</span> View Attack Anatomy
+            </button>
+          </div>
+        </article>
+      </div>
+
+      <!-- No Results Feedback -->
+      <div id="noResults" style="display: none; text-align: center; padding: var(--space-2xl); color: var(--color-text-muted);">
+        <p style="font-size: 2rem; margin-bottom: var(--space-xs);">🔍</p>
+        <h3>No matching threat vectors found</h3>
+        <p>Try searching for a different keyword such as "ransomware", "phishing", or "wifi".</p>
+      </div>
+    </main>
+
+    <!-- Interactive Attack Anatomy Modal -->
+    <div id="anatomyModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="modalTitle" style="margin: 0; color: #ffffff;">Attack Vector Breakdown</h3>
+          <button type="button" id="closeModalBtn" class="modal-close-btn" aria-label="Close dialog">✕</button>
+        </div>
+        <div class="modal-body" id="modalBody">
+          <!-- Dynamically populated by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="portal-footer" role="contentinfo">
+      <div class="footer-status">
+        <span class="status-dot status-dot-green"></span>
+        <span>Threat Database Synced // MITRE ATT&CK Matrix v14</span>
+      </div>
+      <div class="footer-links">
+        <a href="home.html">Dashboard</a>
+        <a href="best-practices.html">Best Practices</a>
+        <a href="quiz.html">Challenge</a>
+        <a href="resources.html">Emergency SOC</a>
+      </div>
+      <div>© 2026 CyberAware Portal — Defense in Depth Program</div>
+    </footer>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Threats Page Interactive Filter, Search & Attack Anatomy Modal Logic
+    (function initThreats() {
+      const searchInput = document.getElementById('threatSearchInput');
+      const filterPills = document.querySelectorAll('.filter-pill');
+      const cards = document.querySelectorAll('.threat-card');
+      const noResults = document.getElementById('noResults');
+      const modal = document.getElementById('anatomyModal');
+      const closeModalBtn = document.getElementById('closeModalBtn');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalBody = document.getElementById('modalBody');
+
+      let currentCategory = 'all';
+
+      // Check URL parameters for preset category
+      const urlParams = new URLSearchParams(window.location.search);
+      const categoryParam = urlParams.get('category');
+      if (categoryParam) {
+        currentCategory = categoryParam;
+        filterPills.forEach(p => {
+          if (p.getAttribute('data-category') === categoryParam) {
+            filterPills.forEach(btn => btn.classList.remove('active'));
+            p.classList.add('active');
+          }
+        });
+      }
+
+      function filterCards() {
+        const query = searchInput.value.toLowerCase().trim();
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          const nameData = card.getAttribute('data-name').toLowerCase();
+          const cardText = card.textContent.toLowerCase();
+
+          const matchesCategory = (currentCategory === 'all' || category === currentCategory);
+          const matchesQuery = (!query || nameData.includes(query) || cardText.includes(query));
+
+          if (matchesCategory && matchesQuery) {
+            card.style.display = 'flex';
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        noResults.style.display = (visibleCount === 0) ? 'block' : 'none';
+      }
+
+      searchInput.addEventListener('input', filterCards);
+
+      filterPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          filterPills.forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+          currentCategory = pill.getAttribute('data-category');
+          filterCards();
+        });
+      });
+
+      // Anatomy Modal Details Data
+      const anatomyData = {
+        phishing: {
+          title: "Anatomy of Spear Phishing & Wire Fraud",
+          steps: [
+            { num: "01", title: "Target Reconnaissance", desc: "Attacker researches the company org chart via LinkedIn to find who approves vendor payments and who is currently traveling." },
+            { num: "02", title: "Spoofed Domain & Urgency", desc: "Sends an email from 'ceo@company-holdings.co' (1 altered letter) demanding an urgent confidential wire transfer before market close." },
+            { num: "03", title: "Interception & Account Drain", desc: "The accountant initiates payment without voice confirmation; stolen funds are instantly moved across foreign cryptocurrency bridges." }
+          ],
+          defense: "Mandate verbal out-of-band phone verification using official internal contact numbers before approving any banking detail change."
+        },
+        ransomware: {
+          title: "Anatomy of a Ransomware Intrusion",
+          steps: [
+            { num: "01", title: "Initial Access", desc: "Employee downloads what looks like an 'Updated Shipping Manifest.zip' or attacker exploits an open RDP port on a neglected server." },
+            { num: "02", title: "Privilege Escalation & Data Exfiltration", desc: "Malware runs Mimikatz to dump domain admin credentials, silently uploading terabytes of sensitive records to offshore cloud storage." },
+            { num: "03", title: "Shadow Volume Deletion & Encryption", desc: "Automated scripts wipe Windows Volume Shadow Copies and encrypt all network disks with AES-256, leaving ransom README files." }
+          ],
+          defense: "Maintain offline, immutable 3-2-1 air-gapped backups, enforce least privilege access, and segment network VLANs."
+        },
+        mfafatigue: {
+          title: "Anatomy of an MFA Fatigue Attack",
+          steps: [
+            { num: "01", title: "Credential Acquisition", desc: "Attacker purchases employee password from an old database breach or through an earlier phishing site." },
+            { num: "02", title: "The Midnight Push Storm", desc: "At 2:30 AM, automated scripts spam 40 consecutive Microsoft Authenticator push approvals to the employee's phone." },
+            { num: "03", title: "Accidental Surrender", desc: "Hoping to silence the buzzing alerts, the employee taps 'Approve'. The attacker instantly registers their own secondary device." }
+          ],
+          defense: "Upgrade to number-matching MFA (where the user must type the two-digit code displayed on the screen) and notify SOC on unsolicited pushes."
+        },
+        credstuffing: {
+          title: "Anatomy of Credential Stuffing",
+          steps: [
+            { num: "01", title: "Combo-List Aggregation", desc: "Criminals assemble databases containing 10 billion leaked username/password combinations compiled from past breaches." },
+            { num: "02", title: "Headless Browser Botnet", desc: "Distributes thousands of login attempts across clean residential IP addresses to evade rate limits and geo-fencing." },
+            { num: "03", title: "Account Takeover", desc: "Any user who reused their password across personal and work services gets hijacked, compromising corporate cloud vaults." }
+          ],
+          defense: "Use a password manager to generate unique, high-entropy 16+ character passphrases for every single website."
+        },
+        vishing: {
+          title: "Anatomy of Pretexting & Voice Phishing",
+          steps: [
+            { num: "01", title: "Authority Setup", desc: "Caller dials an employee from a spoofed caller ID matching the internal IT service desk number." },
+            { num: "02", title: "Created Crisis", desc: "'Hello Sarah, this is Jason from IT. We see unauthorized logins on your laptop right now; I need the 6-digit code sent to your phone to block them.'" },
+            { num: "03", title: "Token Exfiltration", desc: "The panicked user reads out the code. In reality, the attacker used that code to authorize their own password reset." }
+          ],
+          defense: "IT will NEVER ask you for your one-time passwords or credentials over the phone. Hang up and call IT back via the official employee directory."
+        },
+        eviltwin: {
+          title: "Anatomy of an Evil Twin Wireless Attack",
+          steps: [
+            { num: "01", title: "Rogue Access Point Deployment", desc: "Attacker sits in an airport lounge with a portable Wi-Fi transceiver broadcasting the SSID 'Airport_HighSpeed_Free'." },
+            { num: "02", title: "Captive Portal Phish", desc: "Victims connect and are met with a convincing screen: 'Sign in with your corporate email to access free 5G internet.'" },
+            { num: "03", title: "Traffic Snooping", desc: "Attacker inspects all unencrypted network packets, session cookies, and injects fake DNS redirects to phishing clones." }
+          ],
+          defense: "Always activate your enterprise VPN before doing any work on public Wi-Fi networks and disable automatic Wi-Fi joining."
+        },
+        quishing: {
+          title: "Anatomy of a Quishing (QR Phish) Attack",
+          steps: [
+            { num: "01", title: "QR Code Obfuscation", desc: "Attacker places a QR code inside an email PDF or pastes a sticker over an authentic physical poster." },
+            { num: "02", title: "Gateway Bypass", desc: "Corporate email scanners read text and simple URLs, but miss image-encoded QR barcodes." },
+            { num: "03", title: "Mobile Device Phish", desc: "User scans with their personal smartphone camera, bypassing corporate endpoint protections and entering credentials on a rogue site." }
+          ],
+          defense: "Inspect the decoded destination URL preview before tapping to open in mobile browsers. Never authenticate corporate accounts via random QR codes."
+        },
+        malvertising: {
+          title: "Anatomy of a Drive-by Download",
+          steps: [
+            { num: "01", title: "Ad-Network Compromise", desc: "Attackers submit fraudulent, obfuscated ad scripts to legitimate third-party ad syndicates." },
+            { num: "02", title: "Silent Fingerprinting", desc: "When the ad renders on a popular news website, it silently scans the visitor's browser for unpatched zero-day vulnerabilities." },
+            { num: "03", title: "Silent Payload Execution", desc: "An exploit kit drops a payload directly into system memory without displaying any download prompt." }
+          ],
+          defense: "Keep browsers and operating systems automatically updated with weekly security patches, and use privacy/ad-blocking extensions."
+        }
+      };
+
+      // Modal open handlers
+      document.querySelectorAll('.view-anatomy-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const threatKey = btn.getAttribute('data-threat');
+          const data = anatomyData[threatKey];
+          if (!data) return;
+
+          modalTitle.textContent = data.title;
+
+          let stepsHtml = data.steps.map(s => `
+            <div class="attack-step">
+              <div class="attack-step-num">${s.num}</div>
+              <div class="attack-step-content">
+                <h4>${s.title}</h4>
+                <p>${s.desc}</p>
+              </div>
+            </div>
+          `).join('');
+
+          modalBody.innerHTML = `
+            <div class="attack-steps-flow">
+              ${stepsHtml}
+            </div>
+            <div style="background: rgba(0, 230, 153, 0.1); border: 1px solid rgba(0, 230, 153, 0.3); border-radius: var(--radius-md); padding: var(--space-md); margin-top: var(--space-md);">
+              <h4 style="color: #00ffaa; margin-bottom: 0.25rem; font-size: 0.9rem;">🛡️ Recommended Countermeasure:</h4>
+              <p style="color: var(--color-text-bright); font-size: 0.85rem; margin: 0;">${data.defense}</p>
+            </div>
+          `;
+
+          modal.classList.add('active');
+        });
+      });
+
+      // Modal close handlers
+      function closeModal() {
+        modal.classList.remove('active');
+      }
+
+      closeModalBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+      });
+
+      // Initial filter run
+      filterCards();
+    })();
+  </script>
+</body>
+</html>

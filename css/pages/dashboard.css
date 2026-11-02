@@ -1,0 +1,192 @@
+/* ==========================================================================
+   CyberAware Portal - Dashboard & Page Specific Tweaks
+   ========================================================================== */
+
+.app-page .content-area {
+  animation: pageFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Live Intel Ticker
+   -------------------------------------------------------------------------- */
+.intel-feed {
+  background: rgba(8, 16, 28, 0.9);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.intel-feed-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-sm);
+  padding-bottom: var(--space-xs);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.intel-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.intel-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding: 0.55rem 0.85rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  transition: background var(--transition-fast);
+}
+
+.intel-item:hover {
+  background: rgba(0, 240, 255, 0.05);
+}
+
+.intel-time {
+  font-family: var(--font-mono);
+  color: var(--color-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Attack Anatomy Flowchart (Inside Modal or Card)
+   -------------------------------------------------------------------------- */
+.attack-steps-flow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  position: relative;
+  margin: var(--space-md) 0;
+}
+
+.attack-step {
+  display: flex;
+  gap: var(--space-md);
+  align-items: flex-start;
+  position: relative;
+}
+
+.attack-step-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(0, 240, 255, 0.15);
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: var(--font-size-sm);
+}
+
+.attack-step-content {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm) var(--space-md);
+}
+
+.attack-step-content h4 {
+  font-size: var(--font-size-sm);
+  color: #ffffff;
+  margin-bottom: 0.2rem;
+}
+
+.attack-step-content p {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-base);
+  margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Certificate / Completion Badge
+   -------------------------------------------------------------------------- */
+.completion-certificate {
+  background: linear-gradient(145deg, rgba(14, 25, 44, 0.95) 0%, rgba(8, 15, 27, 0.98) 100%);
+  border: 2px solid var(--color-primary);
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.25);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  text-align: center;
+  margin-top: var(--space-lg);
+  position: relative;
+}
+
+.certificate-seal {
+  font-size: 3rem;
+  margin-bottom: var(--space-sm);
+  display: inline-block;
+  animation: pulseSeal 3s infinite ease-in-out;
+}
+
+@keyframes pulseSeal {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+/* --------------------------------------------------------------------------
+   Phishing Spotter Email Viewer
+   -------------------------------------------------------------------------- */
+.email-mockup {
+  background: #0d1726;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin: var(--space-md) 0;
+}
+
+.email-mockup-header {
+  background: rgba(255, 255, 255, 0.03);
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--color-border-subtle);
+  font-size: var(--font-size-xs);
+  font-family: var(--font-mono);
+}
+
+.email-field {
+  display: flex;
+  margin-bottom: 0.25rem;
+}
+
+.email-field-name {
+  width: 70px;
+  color: var(--color-text-muted);
+}
+
+.email-field-val {
+  color: var(--color-text-bright);
+}
+
+.email-field-val.highlight-spoof {
+  color: #ff5c84;
+  background: rgba(255, 51, 102, 0.15);
+  padding: 0 4px;
+  border-radius: 3px;
+}
+
+.email-mockup-body {
+  padding: var(--space-lg);
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+  color: var(--color-text-bright);
+}

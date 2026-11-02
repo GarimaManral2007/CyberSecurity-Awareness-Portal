@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CyberAware Security Portal - Incident response playbook, emergency hotlines, and enterprise security tools directory." />
+  <title>Incident Hub & Resources | CyberAware Portal</title>
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/pages/dashboard.css" />
+</head>
+<body class="app-page">
+  <div class="cyber-scanner-line" aria-hidden="true"></div>
+
+  <div class="app-container">
+    <!-- Navigation Bar -->
+    <header>
+      <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-brand-group">
+          <a href="home.html" class="logo">
+            <svg class="logo-icon-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M32 4 L54 13 C54 38 42 53 32 60 C22 53 10 38 10 13 Z" fill="#0b1728" stroke="#00f0ff" stroke-width="3"/>
+              <path d="M32 10 L48 17 C48 36 38 48 32 53 C26 48 16 36 16 17 Z" fill="rgba(0, 240, 255, 0.1)"/>
+              <circle cx="32" cy="28" r="5" fill="#00f0ff"/>
+              <path d="M25 44 C25 38 39 38 39 44" stroke="#00f0ff" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+            CyberAware <span class="logo-badge">PORTAL</span>
+          </a>
+        </div>
+
+        <ul class="nav-links">
+          <li><a href="home.html" class="nav-btn"><span>📊</span> Dashboard</a></li>
+          <li><a href="threats.html" class="nav-btn"><span>⚠️</span> Threat Intelligence</a></li>
+          <li><a href="best-practices.html" class="nav-btn"><span>🛡️</span> Defense Toolkit</a></li>
+          <li><a href="quiz.html" class="nav-btn"><span>🎯</span> Security Challenge</a></li>
+          <li><a href="resources.html" class="nav-btn active"><span>📚</span> Incident Hub</a></li>
+        </ul>
+
+        <div class="user-badge-container">
+          <div class="user-chip">
+            <span class="status-dot status-dot-green"></span>
+            <span id="userDisplay">analyst.smith</span>
+            <span id="userRoleBadge" class="badge badge-cyan" style="font-size: 0.65rem;">Level 2</span>
+          </div>
+          <button id="logoutBtn" class="btn btn-danger btn-sm" type="button">Logout</button>
+          <button id="mobileNavToggle" class="mobile-nav-toggle" aria-label="Toggle navigation menu">☰</button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Page Hero Banner -->
+    <section class="page-hero">
+      <div>
+        <div class="hero-meta-badge">
+          <span>●</span> INCIDENT RESPONSE & SOC DIRECTORY // PROTOCOL ACTIVATED
+        </div>
+        <h1>Incident Response & Security Resources</h1>
+        <p class="lead">Critical response playbooks for active breaches, 1-click emergency contacts, and industry-validated security toolkits.</p>
+      </div>
+      <div>
+        <a href="#emergency-section" class="btn btn-danger">
+          <span>🚨</span> Breach Emergency Protocol
+        </a>
+      </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <main class="content-area" role="main">
+      <!-- Section 1: Emergency Incident Response Protocol -->
+      <section id="emergency-section" class="card card-glow-critical" aria-labelledby="ir-heading" style="margin-bottom: var(--space-xl); border-color: rgba(255, 51, 102, 0.4);">
+        <div class="card-header">
+          <div style="display: flex; align-items: center; gap: var(--space-sm);">
+            <div class="card-icon-wrapper" style="color: #ff5c84; border-color: rgba(255, 51, 102, 0.3);">
+              🚨
+            </div>
+            <div>
+              <h2 id="ir-heading" style="margin: 0; font-size: 1.35rem; color: #ffffff;">Active Breach Incident Response (Step-by-Step)</h2>
+              <p style="margin: 0; font-size: 0.85rem; color: var(--color-text-muted);">If you clicked a malicious link, entered credentials, or notice ransomware files, execute this sequence immediately:</p>
+            </div>
+          </div>
+          <span class="badge badge-critical">Time Critical</span>
+        </div>
+
+        <div class="grid-4" style="margin-top: var(--space-lg);">
+          <div style="background: rgba(255, 51, 102, 0.05); border: 1px solid rgba(255, 51, 102, 0.25); border-radius: var(--radius-md); padding: var(--space-md);">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.4rem;">
+              <span class="badge badge-critical">Step 01</span>
+              <span style="font-size: 1.2rem;">🔌</span>
+            </div>
+            <h4 style="color: #ffffff; font-size: 1rem; margin-bottom: 0.35rem;">Sever Network</h4>
+            <p style="font-size: 0.85rem; color: var(--color-text-bright); margin: 0;">
+              Immediately unplug the ethernet cable or turn on <strong>Airplane Mode</strong>. Do <strong>NOT</strong> power down the PC (memory contains critical forensic evidence).
+            </p>
+          </div>
+
+          <div style="background: rgba(255, 119, 0, 0.05); border: 1px solid rgba(255, 119, 0, 0.25); border-radius: var(--radius-md); padding: var(--space-md);">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.4rem;">
+              <span class="badge badge-high">Step 02</span>
+              <span style="font-size: 1.2rem;">📸</span>
+            </div>
+            <h4 style="color: #ffffff; font-size: 1rem; margin-bottom: 0.35rem;">Preserve Evidence</h4>
+            <p style="font-size: 0.85rem; color: var(--color-text-bright); margin: 0;">
+              Take photos of the screen with your smartphone showing any ransom messages, fake update prompts, or altered files. Do not delete files or browser history.
+            </p>
+          </div>
+
+          <div style="background: rgba(0, 240, 255, 0.05); border: 1px solid rgba(0, 240, 255, 0.25); border-radius: var(--radius-md); padding: var(--space-md);">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.4rem;">
+              <span class="badge badge-cyan">Step 03</span>
+              <span style="font-size: 1.2rem;">📞</span>
+            </div>
+            <h4 style="color: #ffffff; font-size: 1rem; margin-bottom: 0.35rem;">Contact SOC Hotline</h4>
+            <p style="font-size: 0.85rem; color: var(--color-text-bright); margin: 0;">
+              Call the Security Operations hotline below from an uncompromised mobile phone. State your name, workstation asset tag, and initial symptoms.
+            </p>
+          </div>
+
+          <div style="background: rgba(0, 230, 153, 0.05); border: 1px solid rgba(0, 230, 153, 0.25); border-radius: var(--radius-md); padding: var(--space-md);">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.4rem;">
+              <span class="badge badge-safe">Step 04</span>
+              <span style="font-size: 1.2rem;">🔐</span>
+            </div>
+            <h4 style="color: #ffffff; font-size: 1rem; margin-bottom: 0.35rem;">Rotate Credentials</h4>
+            <p style="font-size: 0.85rem; color: var(--color-text-bright); margin: 0;">
+              From an independent, known-clean device, change your corporate password and terminate all active session tokens across Microsoft 365 and Google Workspace.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Interactive Emergency Hotline Directory -->
+      <section aria-labelledby="hotline-heading" style="margin-bottom: var(--space-xl);">
+        <h2 id="hotline-heading">
+          <span>📞</span> Emergency Security Hotlines (1-Click Copy)
+        </h2>
+        <p>Available 24/7/365 for security personnel, staff, and contractors facing critical incidents.</p>
+
+        <div class="grid-3">
+          <article class="stat-card" style="flex-direction: column; align-items: flex-start; gap: var(--space-sm);">
+            <div style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+              <span class="badge badge-critical">24/7 Priority</span>
+              <span class="status-dot status-dot-green"></span>
+            </div>
+            <h4 style="color: #ffffff; margin: 0;">SOC Incident Hotline</h4>
+            <div class="font-mono text-cyan-glow" style="font-size: 1.15rem;">+1 (800) 555-CYBER</div>
+            <p style="font-size: 0.75rem; color: var(--color-text-muted); margin: 0;">Direct line to Tier 3 Incident Responders.</p>
+            <button type="button" class="btn btn-secondary btn-sm copy-contact-btn" data-copy="+18005552923" style="width: 100%; margin-top: var(--space-xs);">
+              <span>📋</span> Copy Phone Number
+            </button>
+          </article>
+
+          <article class="stat-card" style="flex-direction: column; align-items: flex-start; gap: var(--space-sm);">
+            <div style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+              <span class="badge badge-high">Confidential</span>
+              <span class="status-dot status-dot-green"></span>
+            </div>
+            <h4 style="color: #ffffff; margin: 0;">CISO Emergency Desk</h4>
+            <div class="font-mono text-cyan-glow" style="font-size: 1rem;">ciso@cyberaware.portal</div>
+            <p style="font-size: 0.75rem; color: var(--color-text-muted); margin: 0;">Encrypted PGP mailbox for leadership escalations.</p>
+            <button type="button" class="btn btn-secondary btn-sm copy-contact-btn" data-copy="ciso@cyberaware.portal" style="width: 100%; margin-top: var(--space-xs);">
+              <span>📋</span> Copy Email Address
+            </button>
+          </article>
+
+          <article class="stat-card" style="flex-direction: column; align-items: flex-start; gap: var(--space-sm);">
+            <div style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+              <span class="badge badge-cyan">Automated</span>
+              <span class="status-dot status-dot-green"></span>
+            </div>
+            <h4 style="color: #ffffff; margin: 0;">Phishing Triage Ingest</h4>
+            <div class="font-mono text-cyan-glow" style="font-size: 1rem;">phish-report@cyberaware.portal</div>
+            <p style="font-size: 0.75rem; color: var(--color-text-muted); margin: 0;">Forward suspicious .eml or .msg attachments here.</p>
+            <button type="button" class="btn btn-secondary btn-sm copy-contact-btn" data-copy="phish-report@cyberaware.portal" style="width: 100%; margin-top: var(--space-xs);">
+              <span>📋</span> Copy Ingest Address
+            </button>
+          </article>
+        </div>
+      </section>
+
+      <!-- Section 3: Verified Security Toolkits & Frameworks -->
+      <section aria-labelledby="tools-heading">
+        <h2 id="tools-heading">
+          <span>🧰</span> Curated Security Tools & Advisories
+        </h2>
+        <p>Enterprise-recommended utilities to audit passwords, scan files, and monitor breach exposures.</p>
+
+        <div class="grid-2">
+          <!-- Password & Authentication Tools -->
+          <article class="card">
+            <div class="card-header">
+              <h3 style="margin: 0; font-size: 1.15rem; color: #ffffff;">🔐 Identity & Vaults</h3>
+              <span class="badge badge-safe">Recommended</span>
+            </div>
+            <ul style="margin: var(--space-sm) 0;">
+              <li><strong>Bitwarden / 1Password:</strong> Open-source, audited, end-to-end zero-knowledge password managers.</li>
+              <li><strong>Aegis Authenticator / YubiKey:</strong> Hardware tokens and open-source offline TOTP multi-factor apps.</li>
+              <li><strong>Have I Been Pwned:</strong> Safe domain check to see if your email address has appeared in historic data breaches.</li>
+            </ul>
+            <div style="display: flex; gap: var(--space-xs); flex-wrap: wrap;">
+              <a href="https://haveibeenpwned.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">Visit HIBP ↗</a>
+              <a href="https://bitwarden.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">Bitwarden ↗</a>
+            </div>
+          </article>
+
+          <!-- Threat Scanning & Analysis -->
+          <article class="card">
+            <div class="card-header">
+              <h3 style="margin: 0; font-size: 1.15rem; color: #ffffff;">🔍 File & URL Forensics</h3>
+              <span class="badge badge-cyan">Analysis</span>
+            </div>
+            <ul style="margin: var(--space-sm) 0;">
+              <li><strong>VirusTotal:</strong> Scans files, hashes, and URLs across 70+ antivirus engines and threat feeds.</li>
+              <li><strong>URLScan.io:</strong> Automated website sandbox that takes screenshots and traces redirects safely.</li>
+              <li><strong>Malwarebytes:</strong> Deep anti-malware and adware scanner for infected endpoints.</li>
+            </ul>
+            <div style="display: flex; gap: var(--space-xs); flex-wrap: wrap;">
+              <a href="https://virustotal.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">VirusTotal ↗</a>
+              <a href="https://urlscan.io" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">URLScan.io ↗</a>
+            </div>
+          </article>
+
+          <!-- Official Standards & Regulatory Bodies -->
+          <article class="card">
+            <div class="card-header">
+              <h3 style="margin: 0; font-size: 1.15rem; color: #ffffff;">📖 Official Standards & Frameworks</h3>
+              <span class="badge badge-purple">Compliance</span>
+            </div>
+            <ul style="margin: var(--space-sm) 0;">
+              <li><strong>CISA.gov Shields Up:</strong> US Cybersecurity and Infrastructure Security Agency tactical guidance.</li>
+              <li><strong>NIST SP 800-63B:</strong> National Institute of Standards & Technology Digital Identity Guidelines.</li>
+              <li><strong>OWASP Top 10:</strong> Open Web Application Security Project vulnerability consensus.</li>
+            </ul>
+            <div style="display: flex; gap: var(--space-xs); flex-wrap: wrap;">
+              <a href="https://cisa.gov" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">CISA.gov ↗</a>
+              <a href="https://owasp.org" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">OWASP.org ↗</a>
+            </div>
+          </article>
+
+          <!-- Privacy & Encrypted Networking -->
+          <article class="card">
+            <div class="card-header">
+              <h3 style="margin: 0; font-size: 1.15rem; color: #ffffff;">🌐 Privacy & DNS Protection</h3>
+              <span class="badge badge-safe">Network</span>
+            </div>
+            <ul style="margin: var(--space-sm) 0;">
+              <li><strong>1.1.1.2 (Cloudflare for Families):</strong> Fast encrypted DNS resolver that automatically blocks known malware sites.</li>
+              <li><strong>Proton VPN / Mullvad:</strong> Audited zero-logging VPN providers ensuring encrypted tunneling on untrusted networks.</li>
+              <li><strong>Quad9 (9.9.9.9):</strong> Non-profit recursive DNS service blocking malicious domain lookups.</li>
+            </ul>
+            <div style="display: flex; gap: var(--space-xs); flex-wrap: wrap;">
+              <a href="https://1.1.1.1" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">Cloudflare 1.1.1.2 ↗</a>
+              <a href="https://quad9.net" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">Quad9 DNS ↗</a>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="portal-footer" role="contentinfo">
+      <div class="footer-status">
+        <span class="status-dot status-dot-green"></span>
+        <span>SOC Hotline Monitored 24/7/365 // Encrypted PGP Ready</span>
+      </div>
+      <div class="footer-links">
+        <a href="home.html">Dashboard</a>
+        <a href="threats.html">Threats</a>
+        <a href="best-practices.html">Best Practices</a>
+        <a href="quiz.html">Challenge</a>
+      </div>
+      <div>© 2026 CyberAware Portal — Defense in Depth Program</div>
+    </footer>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Copy Emergency Hotline Logic
+    (function initResources() {
+      const copyButtons = document.querySelectorAll('.copy-contact-btn');
+      copyButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const contact = btn.getAttribute('data-copy');
+          if (!contact) return;
+
+          navigator.clipboard.writeText(contact).then(() => {
+            window.showToast(`Copied ${contact} to clipboard!`, 'success');
+          }).catch(() => {
+            window.showToast(`Copied ${contact}`, 'success');
+          });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

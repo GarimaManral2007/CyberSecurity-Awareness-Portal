@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CyberAware Security Portal - Secure authentication gateway for enterprise cybersecurity training and threat intelligence." />
+  <title>Login | CyberAware Security Gateway</title>
+  
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/pages/login.css" />
+</head>
+<body class="auth-page">
+  <div class="cyber-scanner-line" aria-hidden="true"></div>
+
+  <main class="auth-container" role="main">
+    <section class="login-card" aria-labelledby="login-heading">
+      <header class="login-header">
+        <div class="logo">
+          <svg class="logo-icon-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M32 4 L54 13 C54 38 42 53 32 60 C22 53 10 38 10 13 Z" fill="#0b1728" stroke="#00f0ff" stroke-width="3"/>
+            <path d="M32 10 L48 17 C48 36 38 48 32 53 C26 48 16 36 16 17 Z" fill="rgba(0, 240, 255, 0.1)"/>
+            <circle cx="32" cy="28" r="5" fill="#00f0ff"/>
+            <path d="M25 44 C25 38 39 38 39 44" stroke="#00f0ff" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          CyberAware <span class="logo-badge">PORTAL</span>
+        </div>
+        <h1 id="login-heading">Secure Access Gateway</h1>
+        <p class="login-subtitle">Internal Security Training & Defense Intelligence</p>
+      </header>
+
+      <!-- Quick Fill Demo Profiles -->
+      <div class="demo-accounts-box">
+        <div class="demo-title">
+          <span>⚡</span> Quick Demo Access (1-Click Fill)
+        </div>
+        <div class="demo-pills">
+          <button type="button" class="demo-pill-btn" data-demo-type="ANALYST">👨‍💻 Security Analyst</button>
+          <button type="button" class="demo-pill-btn" data-demo-type="EMPLOYEE">👤 Staff Member</button>
+          <button type="button" class="demo-pill-btn" data-demo-type="ADMIN">🛡️ CISO Officer</button>
+        </div>
+      </div>
+
+      <form id="loginForm" class="login-form" novalidate>
+        <div class="form-group">
+          <label for="username" class="form-label">
+            <span>Username</span>
+            <span class="font-mono text-muted" style="font-size: 0.75rem;">e.g., analyst.smith</span>
+          </label>
+          <div class="input-wrapper">
+            <input
+              type="text"
+              id="username"
+              name="username"
+              class="form-input"
+              placeholder="Enter your security username"
+              autocomplete="username"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password" class="form-label">
+            <span>Password</span>
+            <span class="font-mono text-muted" style="font-size: 0.75rem;">min 4 characters</span>
+          </label>
+          <div class="input-wrapper">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="form-input"
+              placeholder="••••••••••••"
+              autocomplete="current-password"
+              required
+            />
+            <button type="button" id="togglePassword" class="input-icon-btn" aria-label="Toggle password visibility" title="Show password">
+              👁️
+            </button>
+          </div>
+        </div>
+
+        <div id="loginError" class="error-msg" role="alert" aria-live="polite"></div>
+
+        <button type="submit" class="btn btn-primary btn-block">
+          <span>🛡️</span> Authenticate & Enter Portal
+        </button>
+      </form>
+
+      <div class="security-tip-card">
+        <span>💡</span>
+        <div><strong>Tip of the Day:</strong> Never approve unexpected multi-factor (MFA) prompts on your phone.</div>
+      </div>
+
+      <div class="auth-trust-badges">
+        <div class="auth-trust-item"><span>🔒</span> TLS 1.3 Encrypted</div>
+        <div class="auth-trust-item"><span>🛡️</span> Zero-Trust Session</div>
+        <div class="auth-trust-item"><span>⚡</span> 2FA Protected</div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

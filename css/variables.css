@@ -1,0 +1,93 @@
+/* ==========================================================================
+   CyberAware Portal - Design Tokens & Variables
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Color Palette - Cyber Dark Theme */
+  --color-bg-base: #070b13;
+  --color-bg-alt: #0b1322;
+  --color-bg-surface: rgba(14, 25, 44, 0.75);
+  --color-bg-surface-elevated: rgba(20, 36, 62, 0.85);
+  --color-bg-glass: rgba(11, 22, 39, 0.65);
+
+  /* Borders & Dividers */
+  --color-border: rgba(0, 240, 255, 0.16);
+  --color-border-subtle: rgba(255, 255, 255, 0.08);
+  --color-border-highlight: rgba(0, 240, 255, 0.45);
+
+  /* Primary Brand (Cyber Neon Cyan) */
+  --color-primary: #00f0ff;
+  --color-primary-hover: #38f4ff;
+  --color-primary-dark: #00a8b3;
+  --color-primary-glow: rgba(0, 240, 255, 0.4);
+  --color-primary-subtle: rgba(0, 240, 255, 0.1);
+
+  /* Secondary Accents */
+  --color-accent-blue: #3b82f6;
+  --color-accent-purple: #8b5cf6;
+  --color-accent-emerald: #10b981;
+  --color-accent-emerald-glow: rgba(16, 185, 129, 0.35);
+
+  /* Threat Status / Severity Colors */
+  --color-threat-critical: #ff3366;
+  --color-threat-critical-glow: rgba(255, 51, 102, 0.4);
+  --color-threat-high: #ff7700;
+  --color-threat-high-glow: rgba(255, 119, 0, 0.4);
+  --color-threat-medium: #ffb800;
+  --color-threat-medium-glow: rgba(255, 184, 0, 0.35);
+  --color-threat-safe: #00e699;
+  --color-threat-safe-glow: rgba(0, 230, 153, 0.35);
+
+  /* Typography Colors */
+  --color-text-white: #ffffff;
+  --color-text-bright: #e6f1ff;
+  --color-text-base: #9bb2ce;
+  --color-text-muted: #627d98;
+  --color-heading: #d9e9ff;
+
+  /* Typography Families */
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  /* Font Sizes */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-md: 1.125rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --font-size-3xl: 2.5rem;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Spacing */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+
+  /* Elevation & Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.65);
+  --shadow-glow: 0 0 20px var(--color-primary-glow);
+  --shadow-glow-safe: 0 0 18px var(--color-threat-safe-glow);
+  --shadow-glow-critical: 0 0 18px var(--color-threat-critical-glow);
+
+  /* Transitions */
+  --transition-fast: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}

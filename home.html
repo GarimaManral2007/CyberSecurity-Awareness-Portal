@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CyberAware Security Portal - Command dashboard for employee cybersecurity readiness, threat advisories, and metrics." />
+  <title>Command Dashboard | CyberAware Portal</title>
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/pages/dashboard.css" />
+</head>
+<body class="app-page">
+  <div class="cyber-scanner-line" aria-hidden="true"></div>
+
+  <div class="app-container">
+    <!-- Navigation Bar -->
+    <header>
+      <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-brand-group">
+          <a href="home.html" class="logo">
+            <svg class="logo-icon-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M32 4 L54 13 C54 38 42 53 32 60 C22 53 10 38 10 13 Z" fill="#0b1728" stroke="#00f0ff" stroke-width="3"/>
+              <path d="M32 10 L48 17 C48 36 38 48 32 53 C26 48 16 36 16 17 Z" fill="rgba(0, 240, 255, 0.1)"/>
+              <circle cx="32" cy="28" r="5" fill="#00f0ff"/>
+              <path d="M25 44 C25 38 39 38 39 44" stroke="#00f0ff" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+            CyberAware <span class="logo-badge">PORTAL</span>
+          </a>
+        </div>
+
+        <ul class="nav-links">
+          <li><a href="home.html" class="nav-btn active"><span>📊</span> Dashboard</a></li>
+          <li><a href="threats.html" class="nav-btn"><span>⚠️</span> Threat Intelligence</a></li>
+          <li><a href="best-practices.html" class="nav-btn"><span>🛡️</span> Defense Toolkit</a></li>
+          <li><a href="quiz.html" class="nav-btn"><span>🎯</span> Security Challenge</a></li>
+          <li><a href="resources.html" class="nav-btn"><span>📚</span> Incident Hub</a></li>
+        </ul>
+
+        <div class="user-badge-container">
+          <div class="user-chip">
+            <span class="status-dot status-dot-green"></span>
+            <span id="userDisplay">analyst.smith</span>
+            <span id="userRoleBadge" class="badge badge-cyan" style="font-size: 0.65rem;">Level 2</span>
+          </div>
+          <button id="logoutBtn" class="btn btn-danger btn-sm" type="button" title="Sign out of portal">
+            Logout
+          </button>
+          <button id="mobileNavToggle" class="mobile-nav-toggle" aria-label="Toggle navigation menu">
+            ☰
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Page Hero Banner -->
+    <section class="page-hero">
+      <div>
+        <div class="hero-meta-badge">
+          <span>●</span> SEC-OPS LIVE // PERIMETER STATUS: NORMAL
+        </div>
+        <h1>Cyber Security Awareness</h1>
+        <p class="lead">Learn how to stay safe online, spot common scams, and protect your work account.</p>
+      </div>
+      <div>
+        <a href="quiz.html" class="btn btn-primary">
+          <span>🎯</span> Take Security Challenge
+        </a>
+      </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <main class="content-area" role="main">
+      <!-- Live Advisory Banner -->
+      <section class="advisory-banner" aria-label="Security Advisory">
+        <div class="advisory-title">
+          <span class="status-dot status-dot-amber"></span>
+          <span>SECURITY NOTICE</span>
+        </div>
+        <p class="advisory-text">
+          Watch out for fake QR codes and invoice scams. Confirm payment details with the person who sent them before paying.
+        </p>
+        <a href="threats.html?category=phishing" class="btn btn-secondary btn-sm">See common threats</a>
+      </section>
+
+      <!-- Key Security Metrics -->
+      <section aria-label="Security Metrics">
+        <div class="grid-4">
+          <article class="stat-card">
+            <div class="card-icon-wrapper" style="color: var(--color-threat-safe); border-color: rgba(0, 230, 153, 0.3);">
+              🛡️
+            </div>
+            <div>
+              <div class="stat-value">142 Days</div>
+              <div class="stat-label">Zero Incident Streak</div>
+            </div>
+          </article>
+
+          <article class="stat-card">
+            <div class="card-icon-wrapper" style="color: var(--color-primary); border-color: rgba(0, 240, 255, 0.3);">
+              🎣
+            </div>
+            <div>
+              <div class="stat-value">94.8%</div>
+              <div class="stat-label">Phishing Test Pass Rate</div>
+            </div>
+          </article>
+
+          <article class="stat-card">
+            <div class="card-icon-wrapper" style="color: #c4b5fd; border-color: rgba(139, 92, 246, 0.3);">
+              ⚡
+            </div>
+            <div>
+              <div class="stat-value">89 / 100</div>
+              <div class="stat-label">Cyber Hygiene Score</div>
+            </div>
+          </article>
+
+          <article class="stat-card">
+            <div class="card-icon-wrapper" style="color: #ff9433; border-color: rgba(255, 119, 0, 0.3);">
+              🛑
+            </div>
+            <div>
+              <div class="stat-value">5,120+</div>
+              <div class="stat-label">Threats Filtered Today</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Defense Pillars -->
+      <section aria-labelledby="pillars-heading">
+        <h2 id="pillars-heading">
+          <span>🏛️</span> The Three Pillars of Cyber Defense
+        </h2>
+        <p>Many security problems start with a simple mistake. These three habits can help keep your account and devices safe.</p>
+
+        <div class="grid-3">
+          <article class="card card-glow-safe">
+            <div class="card-header">
+              <div class="card-icon-wrapper">🔑</div>
+              <span class="badge badge-safe">Pillar 01</span>
+            </div>
+            <h3>Protect your account</h3>
+            <p>Use a different, strong password for each account. Turn on sign-in verification when it is available.</p>
+            <ul>
+              <li>Use a unique password for each account</li>
+              <li>Turn on two-step verification</li>
+              <li>Decline sign-in requests you did not start</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="card-header">
+              <div class="card-icon-wrapper">📧</div>
+              <span class="badge badge-cyan">Pillar 02</span>
+            </div>
+            <h3>Check messages carefully</h3>
+            <p>Scam messages may pretend to come from your manager, a supplier, or IT support. They often try to rush you.</p>
+            <ul>
+              <li>Check who sent the message</li>
+              <li>Check links before opening them</li>
+              <li>Confirm unusual payment requests by phone</li>
+            </ul>
+          </article>
+
+          <article class="card card-glow-critical">
+            <div class="card-header">
+              <div class="card-icon-wrapper">💻</div>
+              <span class="badge badge-high">Pillar 03</span>
+            </div>
+            <h3>Keep devices safe</h3>
+            <p>Keep your devices updated and be careful when using public Wi-Fi or unknown USB drives.</p>
+            <ul>
+              <li>Install updates when prompted</li>
+              <li>Do not plug in USB drives you find</li>
+              <li>Avoid sensitive work on public Wi-Fi</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- Live Intel Feed & Quick Action Launchpad -->
+      <div class="grid-2">
+        <!-- Live Threat Feed -->
+        <section class="intel-feed" aria-labelledby="intel-heading">
+          <div class="intel-feed-header">
+            <h3 id="intel-heading" style="margin: 0; display: flex; align-items: center; gap: 0.5rem; font-size: 1.05rem;">
+              <span>📡</span> Live Security Intelligence Feed
+            </h3>
+            <span class="badge badge-cyan">Auto-Sync</span>
+          </div>
+          <div class="intel-items-list">
+            <div class="intel-item">
+              <div>
+                <strong style="color: #ffffff;">Browser Zero-Day Alert:</strong> Chromium security patch released for remote code execution.
+              </div>
+              <span class="intel-time">04m ago</span>
+            </div>
+            <div class="intel-item">
+              <div>
+                <strong style="color: #ff9433;">BEC Wire Fraud Campaign:</strong> Attackers spoofing CFO invoice approval signatures.
+              </div>
+              <span class="intel-time">18m ago</span>
+            </div>
+            <div class="intel-item">
+              <div>
+                <strong style="color: #c4b5fd;">Quishing Wave:</strong> Malicious QR codes found placed over legitimate cafeteria posters.
+              </div>
+              <span class="intel-time">42m ago</span>
+            </div>
+            <div class="intel-item">
+              <div>
+                <strong style="color: #00ffaa;">Perimeter Update:</strong> Edge firewalls blocked 850+ malicious IP subnets in last 2 hours.
+              </div>
+              <span class="intel-time">1h ago</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Quick Action Toolkit Launchpad -->
+        <section class="card" aria-labelledby="launchpad-heading">
+          <div class="card-header">
+            <h3 id="launchpad-heading" style="margin: 0; display: flex; align-items: center; gap: 0.5rem; font-size: 1.05rem;">
+              <span>⚡</span> Security Toolkit Launchpad
+            </h3>
+            <span class="badge badge-purple">Interactive</span>
+          </div>
+          <p>Test your knowledge and verify your workstation defenses with our built-in training modules:</p>
+          <div style="display: flex; flex-direction: column; gap: var(--space-xs);">
+            <a href="best-practices.html#password-tool" class="btn btn-secondary" style="justify-content: space-between;">
+              <span>🔑 Test Password Entropy & Crack Time</span>
+              <span>➔</span>
+            </a>
+            <a href="best-practices.html#hygiene-audit" class="btn btn-secondary" style="justify-content: space-between;">
+              <span>📋 Calculate Personal Cyber Hygiene Score</span>
+              <span>➔</span>
+            </a>
+            <a href="threats.html" class="btn btn-secondary" style="justify-content: space-between;">
+              <span>🔍 Search Attack Vectors & Ransomware Playbooks</span>
+              <span>➔</span>
+            </a>
+            <a href="resources.html" class="btn btn-secondary" style="justify-content: space-between;">
+              <span>🚨 Access SOC Emergency Breach Protocol</span>
+              <span>➔</span>
+            </a>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="portal-footer" role="contentinfo">
+      <div class="footer-status">
+        <span class="status-dot status-dot-green"></span>
+        <span>Cyber Defense System v2.4 — All Systems Encrypted</span>
+      </div>
+      <div class="footer-links">
+        <a href="threats.html">Threats</a>
+        <a href="best-practices.html">Best Practices</a>
+        <a href="quiz.html">Challenge</a>
+        <a href="resources.html">Emergency SOC</a>
+      </div>
+      <div>© 2026 CyberAware Portal — Internal Awareness Program</div>
+    </footer>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
